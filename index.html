@@ -55,7 +55,19 @@
     .contact h2{font:400 clamp(30px,4vw,44px) Georgia,serif;margin:12px 0}
     .contact p{color:var(--muted);line-height:1.8}
     footer{padding:24px 6%;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12px;color:var(--muted);border-top:1px solid var(--line)}
-    .whatsapp-float{position:fixed;bottom:18px;right:18px;background:#286b4e;color:#fff;padding:14px 18px;border-radius:30px;font-size:13px;box-shadow:0 8px 24px #0002;z-index:3}
+    .whatsapp-float{position:fixed;bottom:18px;right:18px;background:#16834a;color:#fff;padding:15px 17px;border-radius:50%;width:58px;height:58px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 8px 24px #0003;z-index:20}
+    .product-open{display:flex;width:100%;background:#fff;color:var(--ink);border:1px solid var(--ink);justify-content:center;padding:13px 10px;margin-top:9px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+    .product-modal{position:fixed;inset:0;background:#1c1714b8;z-index:30;display:none;overflow:auto;padding:22px}
+    .product-modal.open{display:flex;align-items:center;justify-content:center}
+    .modal-panel{background:var(--white);width:min(900px,100%);max-height:calc(100vh - 44px);overflow:auto;position:relative;display:grid;grid-template-columns:1fr 1fr}
+    .modal-close{position:absolute;top:12px;right:12px;z-index:2;border:0;background:#fff;color:var(--ink);width:40px;height:40px;border-radius:50%;font-size:24px;cursor:pointer}
+    .modal-visual{min-height:360px;background:linear-gradient(145deg,#f5e9e2,#e8d3c8);display:flex;align-items:center;justify-content:center;position:relative}
+    .modal-copy{padding:48px 32px}
+    .modal-copy h2{font:400 clamp(28px,4vw,38px) Georgia,serif;margin:12px 0}
+    .modal-copy p{color:var(--muted);line-height:1.8;font-size:14px}
+    .modal-whatsapp{display:flex;justify-content:center;background:#16834a;color:#fff;padding:15px;margin-top:22px;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+    .modal-gallery-note{position:absolute;bottom:14px;font-size:10px;letter-spacing:.1em;color:#80695d;background:#fff9;padding:8px}
+    @media(max-width:700px){.modal-panel{grid-template-columns:1fr}.modal-visual{min-height:260px}.modal-copy{padding:28px 22px}.product-modal{padding:12px}.whatsapp-float{width:54px;height:54px;bottom:14px;right:14px}}
     @media(max-width:700px){header{padding:18px 5%;align-items:flex-start;flex-direction:column}nav{gap:16px;flex-wrap:wrap}.hero{grid-template-columns:1fr;padding:54px 7%;gap:20px}.hero-art{min-height:220px}.categories{grid-template-columns:1fr}.product-grid{grid-template-columns:1fr;max-width:420px;margin:auto}.product-visual{height:230px}section{padding:50px 6%}.whatsapp-float{bottom:12px;right:12px}}
   </style>
 </head>
@@ -96,7 +108,7 @@
             <h3>Perfume Modelo Nº 01</h3>
             <p>Espaço reservado para a descrição da fragrância, tamanho e principais notas.</p>
             <span class="product-price">Preço a definir</span>
-            <a class="product-button" href="https://wa.me/5562981207040?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20Perfume%20Modelo%20N%C2%BA%2001.%20Pode%20me%20passar%20as%20informa%C3%A7%C3%B5es%3F" target="_blank" rel="noopener noreferrer">Consultar no WhatsApp ↗</a>
+            <button class="product-open" type="button" data-product="0">Ver detalhes do produto</button>
           </div>
         </article>
         <article class="product-card">
@@ -106,7 +118,7 @@
             <h3>Seu próximo perfume</h3>
             <p>Foto, nome, volume e descrição do produto serão adicionados aqui.</p>
             <span class="product-price">Preço a definir</span>
-            <a class="product-button" href="https://wa.me/5562981207040?text=Ol%C3%A1%21%20Quero%20saber%20quais%20perfumes%20est%C3%A3o%20dispon%C3%ADveis." target="_blank" rel="noopener noreferrer">Consultar disponibilidade ↗</a>
+            <button class="product-open" type="button" data-product="1">Ver detalhes do produto</button>
           </div>
         </article>
         <article class="product-card">
@@ -116,7 +128,7 @@
             <h3>Cosmético Modelo</h3>
             <p>Espaço para foto, benefícios, tamanho e informações do cosmético.</p>
             <span class="product-price">Preço a definir</span>
-            <a class="product-button" href="https://wa.me/5562981207040?text=Ol%C3%A1%21%20Quero%20conhecer%20os%20cosm%C3%A9ticos%20dispon%C3%ADveis." target="_blank" rel="noopener noreferrer">Consultar no WhatsApp ↗</a>
+            <button class="product-open" type="button" data-product="2">Ver detalhes do produto</button>
           </div>
         </article>
       </div>
@@ -129,7 +141,66 @@
     </section>
   </main>
   <footer><span>© <span id="year"></span> Vanessa Perfumaria e Cosméticos</span><span>Beleza nos detalhes.</span></footer>
-  <a class="whatsapp-float" href="https://wa.me/5562981207040?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Vanessa%20Perfumaria." target="_blank" rel="noopener noreferrer" aria-label="Fale conosco pelo WhatsApp">WhatsApp ↗</a>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <a class="whatsapp-float" id="floatingWhatsapp" href="https://wa.me/5562981207040?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Vanessa%20Perfumaria." target="_blank" rel="noopener noreferrer" aria-label="Fale conosco pelo WhatsApp" title="Fale pelo WhatsApp">☏</a>
+  <div class="product-modal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-panel">
+      <button class="modal-close" type="button" id="closeModal" aria-label="Fechar detalhes">×</button>
+      <div class="modal-visual"><div class="ghost-bottle" id="modalBottle"><span>VANESSA<br>FRAGRÂNCIA</span></div><span class="modal-gallery-note">IMAGEM PROVISÓRIA · FOTOS REAIS SERÃO ADICIONADAS</span></div>
+      <div class="modal-copy">
+        <span class="eyebrow">Detalhes do produto</span>
+        <h2 id="modalTitle">Perfume Modelo Nº 01</h2>
+        <span class="product-price" id="modalPrice">Preço a definir</span>
+        <p id="modalDescription">Espaço reservado para a descrição completa do produto.</p>
+        <p><strong>Fotos:</strong> esta é uma imagem ilustrativa provisória. As fotos reais serão adicionadas quando estiverem disponíveis.</p>
+        <a class="modal-whatsapp" id="modalWhatsapp" href="https://wa.me/5562981207040" target="_blank" rel="noopener noreferrer">Perguntar sobre este produto no WhatsApp ↗</a>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const products = [
+      {name:'Perfume Modelo Nº 01',price:'Preço a definir',description:'Este é o perfume de demonstração do catálogo. Aqui ficará a descrição completa, incluindo família olfativa, notas de saída, corpo e fundo, volume e sugestões de uso. As informações reais serão inseridas quando o produto for definido.'},
+      {name:'Seu próximo perfume',price:'Preço a definir',description:'Espaço para apresentar a fragrância, suas notas, intensidade, volume e ocasiões recomendadas. Este conteúdo é provisório e será substituído pelas informações do produto real.'},
+      {name:'Cosmético Modelo',price:'Preço a definir',description:'Espaço para explicar os benefícios, modo de uso, tamanho e características do cosmético. Este conteúdo é provisório e será atualizado com os dados reais.'}
+    ];
+    const modal = document.getElementById('productModal');
+    const floatingWhatsapp = document.getElementById('floatingWhatsapp');
+    let selectedProduct = null;
+    function productLink(index){ return location.origin + location.pathname + '#produto-' + (index + 1); }
+    function whatsappLink(index){
+      const p = products[index];
+      const message = 'Olá! Tenho interesse em ' + p.name + '. Vi este produto no site: ' + productLink(index);
+      return 'https://wa.me/5562981207040?text=' + encodeURIComponent(message);
+    }
+    document.querySelectorAll('[data-product]').forEach(button => {
+      button.addEventListener('click', () => {
+        selectedProduct = Number(button.dataset.product);
+        const p = products[selectedProduct];
+        document.getElementById('modalTitle').textContent = p.name;
+        document.getElementById('modalPrice').textContent = p.price;
+        document.getElementById('modalDescription').textContent = p.description;
+        document.getElementById('modalWhatsapp').href = whatsappLink(selectedProduct);
+        history.replaceState(null, '', '#produto-' + (selectedProduct + 1));
+        floatingWhatsapp.href = whatsappLink(selectedProduct);
+        floatingWhatsapp.setAttribute('aria-label', 'Perguntar sobre ' + p.name + ' pelo WhatsApp');
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    function closeProductModal(){
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+      selectedProduct = null;
+      history.replaceState(null, '', location.pathname + location.search);
+      floatingWhatsapp.href = 'https://wa.me/5562981207040?text=' + encodeURIComponent('Olá! Vim pelo site da Vanessa Perfumaria.');
+      floatingWhatsapp.setAttribute('aria-label', 'Fale conosco pelo WhatsApp');
+    }
+    document.getElementById('closeModal').addEventListener('click', closeProductModal);
+    modal.addEventListener('click', event => { if(event.target === modal) closeProductModal(); });
+    document.addEventListener('keydown', event => { if(event.key === 'Escape' && modal.classList.contains('open')) closeProductModal(); });
+    floatingWhatsapp.addEventListener('click', () => {
+      if(selectedProduct !== null) floatingWhatsapp.href = whatsappLink(selectedProduct);
+    });
+  </script>
 </body>
 </html>
