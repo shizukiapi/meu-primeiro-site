@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f2ed">
+  <meta name="description" content="Vanessa Perfumaria e Cosméticos — descubra fragrâncias e cuidados especiais.">
+  <title>Vanessa Perfumaria e Cosméticos</title>
+  <style>
+    :root{--ink:#29231f;--muted:#746b65;--cream:#f7f2ed;--rose:#d9b9ad;--white:#fffdfb;--line:#e8ded7}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--white);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+    a{color:inherit;text-decoration:none}
+    .topline{background:#29231f;color:#fff;text-align:center;padding:10px 16px;font-size:12px;letter-spacing:.12em}
+    header{padding:22px 6%;display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line)}
+    .brand{font-family:Georgia,'Times New Roman',serif;font-size:clamp(20px,3vw,30px);letter-spacing:.02em}
+    .brand small{display:block;text-transform:uppercase;font:10px Arial,sans-serif;letter-spacing:.26em;color:var(--muted);margin-top:5px}
+    nav{display:flex;gap:24px;font-size:13px;color:var(--muted)}
+    .hero{background:var(--cream);padding:76px 8%;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:44px;min-height:420px}
+    .eyebrow{text-transform:uppercase;letter-spacing:.22em;font-size:11px;color:#8b6e61}
+    h1{font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(40px,6vw,68px);line-height:1.05;margin:18px 0}
+    .hero p{max-width:470px;color:var(--muted);line-height:1.8;font-size:15px}
+    .button{display:inline-flex;align-items:center;justify-content:center;margin-top:20px;background:var(--ink);color:white;padding:15px 24px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;border:0;cursor:pointer}
+    .hero-art{min-height:260px;display:flex;align-items:center;justify-content:center;position:relative}
+    .orb{width:min(270px,70vw);height:min(270px,70vw);border-radius:50%;background:linear-gradient(145deg,#e6cfc5,#c69d8c);display:flex;align-items:center;justify-content:center;box-shadow:0 25px 55px #8d685222}
+    .bottle{width:92px;height:135px;border:1px solid #fff9;border-radius:14px 14px 20px 20px;background:linear-gradient(90deg,#f9eee6,#d8b3a0,#f6e4d8);position:relative;box-shadow:10px 15px 20px #6c453a22}
+    .bottle:before{content:"";position:absolute;width:36px;height:23px;top:-24px;left:27px;background:#b99b78;border-radius:4px 4px 1px 1px}
+    .bottle:after{content:"VANESSA\A PERFUMARIA";white-space:pre;position:absolute;top:53px;left:0;right:0;text-align:center;font:7px/1.7 Georgia,serif;letter-spacing:.08em;color:#6b5145}
+    section{padding:64px 6%}
+    .section-head{text-align:center;margin-bottom:32px}
+    .section-head h2{font:400 clamp(30px,4vw,42px) Georgia,serif;margin:10px 0}
+    .section-head p{font-size:14px;color:var(--muted);line-height:1.7}
+    .categories{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .category{background:var(--cream);padding:28px 20px;text-align:center;border:1px solid var(--line)}
+    .category .symbol{font-size:25px;margin-bottom:12px}
+    .category h3{font:400 22px Georgia,serif;margin:0 0 8px}
+    .category p{font-size:13px;color:var(--muted);line-height:1.6;margin:0}
+    .products-note{max-width:650px;margin:0 auto 24px;text-align:center;color:var(--muted);font-size:14px;line-height:1.7}
+    .empty-products{max-width:720px;margin:auto;border:1px dashed #cdbab0;padding:30px;text-align:center;color:var(--muted);line-height:1.8}
+    .contact{background:var(--cream);text-align:center}
+    .contact h2{font:400 clamp(30px,4vw,44px) Georgia,serif;margin:12px 0}
+    .contact p{color:var(--muted);line-height:1.8}
+    footer{padding:24px 6%;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12px;color:var(--muted);border-top:1px solid var(--line)}
+    .whatsapp-float{position:fixed;bottom:18px;right:18px;background:#286b4e;color:#fff;padding:14px 18px;border-radius:30px;font-size:13px;box-shadow:0 8px 24px #0002;z-index:3}
+    @media(max-width:700px){header{padding:18px 5%;align-items:flex-start;flex-direction:column}nav{gap:16px;flex-wrap:wrap}.hero{grid-template-columns:1fr;padding:54px 7%;gap:20px}.hero-art{min-height:220px}.categories{grid-template-columns:1fr}section{padding:50px 6%}.whatsapp-float{bottom:12px;right:12px}}
+  </style>
+</head>
+<body>
+  <div class="topline">SUA PRÓXIMA FRAGRÂNCIA FAVORITA COMEÇA AQUI</div>
+  <header>
+    <a class="brand" href="#" aria-label="Vanessa Perfumaria e Cosméticos">Vanessa <small>Perfumaria &amp; Cosméticos</small></a>
+    <nav aria-label="Navegação principal"><a href="#categorias">Categorias</a><a href="#produtos">Produtos</a><a href="#contato">Contato</a></nav>
+  </header>
+  <main>
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Beleza nos detalhes</div>
+        <h1>Seu jeito de<br>perfumar o mundo.</h1>
+        <p>Fragrâncias, beleza e autocuidado para acompanhar você em cada momento. Encontre seu próximo favorito com a gente.</p>
+        <a class="button" href="#produtos">Explorar produtos</a>
+      </div>
+      <div class="hero-art" aria-label="Ilustração decorativa de um frasco de perfume">
+        <div class="orb"><div class="bottle"></div></div>
+      </div>
+    </section>
+    <section id="categorias">
+      <div class="section-head"><div class="eyebrow">Encontre o que combina com você</div><h2>Explore nossas categorias</h2><p>Escolha seu próximo cuidado ou presente especial.</p></div>
+      <div class="categories">
+        <article class="category"><div class="symbol" aria-hidden="true">✧</div><h3>Perfumes</h3><p>Fragrâncias para marcar presença e criar memórias.</p></article>
+        <article class="category"><div class="symbol" aria-hidden="true">❀</div><h3>Cosméticos</h3><p>Pequenos rituais de beleza para o seu dia a dia.</p></article>
+        <article class="category"><div class="symbol" aria-hidden="true">♡</div><h3>Presentes</h3><p>Surpresas especiais para quem você ama.</p></article>
+      </div>
+    </section>
+    <section id="produtos">
+      <div class="section-head"><div class="eyebrow">Escolhas especiais</div><h2>Nossos produtos</h2></div>
+      <p class="products-note">Estamos preparando nosso catálogo. Enquanto isso, fale com a equipe pelo WhatsApp para consultar fragrâncias, disponibilidade e preços.</p>
+      <div class="empty-products">Seu próximo favorito pode estar a uma mensagem de distância.<br><a class="button" href="https://wa.me/5562981207040?text=Ol%C3%A1%21%20Quero%20conhecer%20os%20produtos%20da%20Vanessa%20Perfumaria%20e%20Cosm%C3%A9ticos." target="_blank" rel="noopener noreferrer">Consultar catálogo no WhatsApp</a></div>
+    </section>
+    <section class="contact" id="contato">
+      <div class="eyebrow">Vamos conversar?</div><h2>Atendimento com carinho.</h2>
+      <p>Tire suas dúvidas e descubra os produtos disponíveis diretamente com a nossa equipe.</p>
+      <a class="button" href="https://wa.me/5562981207040?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Vanessa%20Perfumaria." target="_blank" rel="noopener noreferrer">Fale pelo WhatsApp</a>
+    </section>
+  </main>
+  <footer><span>© <span id="year"></span> Vanessa Perfumaria e Cosméticos</span><span>Beleza nos detalhes.</span></footer>
+  <a class="whatsapp-float" href="https://wa.me/5562981207040?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Vanessa%20Perfumaria." target="_blank" rel="noopener noreferrer" aria-label="Fale conosco pelo WhatsApp">WhatsApp ↗</a>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
